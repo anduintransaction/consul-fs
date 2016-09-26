@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-RELEASE=0.1
+RELEASE=0.2
 dist=dist
 bin=consul-fs
 
