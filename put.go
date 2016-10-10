@@ -84,7 +84,7 @@ func cmdPut(kv *api.KV, args []string, config *fsConfig) {
 	if len(args) < 1 {
 		fmt.Fprintf(os.Stderr, "USAGE: %s put OPTIONS <remote> (read content from stdin)\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "       %s put OPTIONS <local file or folder> <remote>\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "OPTIONS:\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "OPTIONS:")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}

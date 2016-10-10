@@ -29,6 +29,9 @@ func consulFsFileExit(kv *api.KV, name string) (bool, error) {
 
 func consulFsFolderExist(kv *api.KV, name string) (bool, error) {
 	name = strings.Trim(name, "/") + "/"
+	if name == "/" {
+		name = ""
+	}
 	pairs, _, err := kv.List(name, nil)
 	if err != nil {
 		return false, err
@@ -41,6 +44,9 @@ func consulFsFolderExist(kv *api.KV, name string) (bool, error) {
 
 func consulListFolder(kv *api.KV, name string) ([]string, error) {
 	name = strings.Trim(name, "/") + "/"
+	if name == "/" {
+		name = ""
+	}
 	pairs, _, err := kv.List(name, nil)
 	if err != nil {
 		return nil, err

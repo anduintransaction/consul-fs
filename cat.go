@@ -12,7 +12,7 @@ import (
 func cmdCat(kv *api.KV, args []string, config *fsConfig) {
 	if len(args) < 1 {
 		fmt.Fprintf(os.Stderr, "USAGE: %s cat OPTIONS <file>\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "OPTIONS:\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "OPTIONS:")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}

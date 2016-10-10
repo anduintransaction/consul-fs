@@ -80,7 +80,6 @@ func getFolder(kv *api.KV, remote, local string, config *fsConfig) error {
 }
 
 func get(kv *api.KV, remote, local string, config *fsConfig) error {
-	fmt.Println(remote, local)
 	exist, err := consulFsFolderExist(kv, remote)
 	if err != nil {
 		return err
@@ -101,7 +100,7 @@ func get(kv *api.KV, remote, local string, config *fsConfig) error {
 func cmdGet(kv *api.KV, args []string, config *fsConfig) {
 	if len(args) < 2 {
 		fmt.Fprintf(os.Stderr, "USAGE: %s get OPTIONS <remote> <local>\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "OPTIONS:\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "OPTIONS:")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}

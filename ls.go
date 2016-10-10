@@ -12,6 +12,9 @@ import (
 
 func getChildren(kv *api.KV, name string) ([]string, error) {
 	name = strings.Trim(name, "/") + "/"
+	if name == "/" {
+		name = ""
+	}
 	pairs, _, err := kv.List(name, nil)
 	if err != nil {
 		return nil, err
@@ -67,7 +70,7 @@ func ls(kv *api.KV, name string, config *fsConfig) error {
 func cmdLs(kv *api.KV, args []string, config *fsConfig) {
 	if len(args) < 1 {
 		fmt.Fprintf(os.Stderr, "USAGE: %s ls OPTIONS <remote>\n", os.Args[0])
-		fmt.Fprintf(os.Stderr, "OPTIONS:\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "OPTIONS:")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
